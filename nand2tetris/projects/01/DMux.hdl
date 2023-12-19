@@ -15,4 +15,9 @@ CHIP DMux {
 
     PARTS:
     // Put your code here:
+    Nor(a=sel,b=sel,out=out1);
+    Nor(a=in,b=in,out=out2);
+    Nor(a=out1,b=out1,out=out3);
+    Nor(a=out2,b=out3,out=a);
+    Nor(a=out1,b=out2,out=b);
 }
