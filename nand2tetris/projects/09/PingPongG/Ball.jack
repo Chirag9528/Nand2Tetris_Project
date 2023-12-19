@@ -1,0 +1,110 @@
+class Ball{
+    field int c1 , c2;
+    field int r;
+    field int speedx;
+    field int speedy;
+    constructor Ball new( int a , int b , int c ){
+        let c1 = a;
+        let c2 = b;
+        let r = c;
+        let speedx = 1;
+        let speedy = 1;
+        do draw();
+        return this;
+    }
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void draw(){
+        do Screen.drawCircle(c1 , c2 , r);
+        return ;
+    }
+    method int moveball( int z1 , int z2 , int z3 , int z4 ){
+        var int scoreof;
+        var int condition;
+        var int condition2;
+        var int condition3;
+        let condition = collisionline();
+        let condition2 = collisionvert();
+        let condition3 = collisionrect(z1 , z2 , z3 , z4);
+        
+        if ((condition = 1) | (condition = 2)){
+            let speedy = -speedy;
+        }
+
+        if ((condition3 = 1) | (condition3 = 2)){
+            let speedx = -speedx;
+            if (condition3 = 1){
+                let scoreof = 1;
+            }
+            else{
+                let scoreof = 2;
+            }
+        }
+        else{
+            if ((condition2 = 1) | (condition2 = 2)){
+                do Screen.setColor(false);
+                do Screen.drawCircle(c1 , c2 , r);
+                do Screen.setColor(true);
+                let c1 = 255;
+                let c2 = 115;
+                if (condition2 = 1){
+                let scoreof = 3;
+                }
+                else{
+                    let scoreof = 4;
+                }
+        }
+        }
+        do Screen.setColor(false);
+        do Screen.drawCircle(c1 , c2 , r);
+        let c1 = c1 + speedx;
+        let c2 = c2 + speedy;
+        do Screen.setColor(true);
+        do Screen.drawCircle(c1 , c2 , r);
+        return scoreof;
+    }
+    
+    method int collisionline(){
+        var int collision;
+        let collision = 0;
+        if ((c2 - r) < 26){
+            let collision = 1;
+        }
+        if ((c2 + r) > 229){
+            let collision = 2;
+        }
+        return collision;
+    }
+    method int collisionvert(){
+        var int collision2;
+        let collision2 = 0;
+        if ((c1 - r) < 17){
+            let collision2 = 1;
+        }
+        if ((c1 + r) > 493){
+            let collision2 = 2;
+        }
+        return collision2;
+    }
+    method  int collisionrect(int z1 , int z2 , int z3 , int z4){
+        var int collision3;
+        let collision3 = 0;
+        if ((c2 > z1) & (c2 < z2) & ( (c1 - r ) < 24 )){
+            let collision3 = 1;
+        }
+        if ((c2 > z3) & (c2 < z4) & ( (c1 + r ) > 486 )){
+            let collision3 = 2;
+        }
+        return collision3;
+
+    }
+    method int getcentery(){
+        return speedy;
+    }
+    method int getcenterx(){
+        return c1;
+    }
+    
+}

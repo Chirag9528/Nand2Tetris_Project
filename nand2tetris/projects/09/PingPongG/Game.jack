@@ -1,0 +1,169 @@
+class Game{
+    field Structure s;
+    field Rectangle r1 , r2;
+    field Ball b;
+    constructor Game new(){
+        let s = Structure.new();
+        let r1 = Rectangle.new(16,105,23,150);
+        let r2 = Rectangle.new(487,105,494,150);
+        let b =  Ball.new(255 , 115 , 5);
+        return this;
+    }
+    method void dispose(){
+        do s.dispose();
+        do b.dispose();
+        do r1.dispose();
+        do r2.dispose();
+        do Memory.deAlloc(this);
+        return ;
+    }
+    method void printscore(int scorea , int lifea , int scoreb , int lifeb){
+        var int score1 , life1 , score2 , life2;
+        let score1 = scorea;
+        let score2 = scoreb;
+        let life1 = lifea;
+        let life2 = lifeb;
+        do Output.moveCursor(22,5);
+        do Output.printString("Life :");
+        do Output.printInt(life1);
+        do Output.printString("  ");
+        do Output.printString("Score :");
+        do Output.printInt(score1);
+        do Output.printString("                 ");
+        do Output.printString("Life :");
+        do Output.printInt(life2);
+        do Output.printString("  ");
+        do Output.printString("Score :");
+        do Output.printInt(score2);
+        return;
+}
+    method void run(){
+        var int aiy;
+        var int aix;
+        var int whom;
+        var int score1;
+        var int score2;
+        var int life1;
+        var int life2;
+        var char key;
+        var boolean exit;
+        var int z1 , z2 , z3 , z4;
+        let exit = false;
+        let whom = 0;
+        let score1 = 0;
+        let score2 = 0;
+        let life1 = 5;
+        let life2 = 5;
+        let aiy = b.getcentery();
+        let aix = b.getcenterx();
+        do Output.moveCursor(1,25);
+        do Output.printString("Ping Pong Game");
+        do Output.moveCursor(13,15);
+        do Output.printString("UpperArrow key for Upwards motion");
+        do Output.moveCursor(15,15);
+        do Output.printString("DownArrow key for Downwards motion");
+        do Sys.wait(1000);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(50,130,400,180);
+        do Screen.setColor(true);
+        do printscore(score1 , life1 , score2 , life2);
+        while (~exit){
+            while (key = 0){
+
+                let key = Keyboard.keyPressed();
+                
+                do r1.aimove(aiy,aix);
+                let aiy = b.getcentery();
+                let aix = b.getcenterx();
+                
+                if (key = 131 ){
+                    do r2.moveUp();
+                }
+                if (key = 133 ){
+                    do r2.moveDown();
+                }
+                let z1 = r1.gety1();
+                let z2 = r1.gety2();
+                let z3 = r2.gety1();
+                let z4 = r2.gety2();
+                let whom =  b.moveball(z1 , z2 , z3 , z4 );
+                if (whom = 1){
+                    let score1 = score1 + 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                if (whom = 2){
+                    let score2 = score2 + 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                if (whom = 3){
+                    let life1 = life1 - 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                if (whom = 4){
+                    let life2 = life2 - 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                do r1.draw();
+                do r2.draw();
+                do Sys.wait(5);
+                if ((life1 < 0) | (life2 < 0)){
+                    let exit = true;
+                    let key = 1;
+                }
+            }
+            while (~(key = 0)){
+
+                let key = Keyboard.keyPressed();
+
+                do r1.aimove(aiy , aix);
+                let aiy = b.getcentery();
+                let aix = b.getcenterx();
+
+                if (key = 131 ){
+                    do r2.moveUp();
+                }
+                if (key = 133 ){
+                    do r2.moveDown();
+                }
+                let z1 = r1.gety1();
+                let z2 = r1.gety2();
+                let z3 = r2.gety1();
+                let z4 = r2.gety2();
+                let whom = b.moveball(z1 , z2 , z3 , z4);
+                if (whom = 1){
+                    let score1 = score1 + 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                if (whom = 2){
+                    let score2 = score2 + 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                if (whom = 3){
+                    let life1 = life1 - 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                if (whom = 4){
+                    let life2 = life2 - 1;
+                    do printscore(score1 , life1 , score2 , life2);
+                }
+                do r1.draw();
+                do r2.draw();
+                do Sys.wait(5);
+                if ((life1 < 0) | (life2 < 0)){
+                    let exit = true;
+                    let key = 0;
+                }
+            }
+        }
+        do Output.moveCursor(12,27);
+        if (life1 < 0){
+        do Output.printString("YOU WON!");
+        do Sys.wait(5000);
+        }
+        if (life2 < 0){
+        do Output.printString("YOU LOSE!");
+        do Sys.wait(5000);
+        }
+        return;
+    }
+}

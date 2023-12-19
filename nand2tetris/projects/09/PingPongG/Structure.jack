@@ -1,0 +1,19 @@
+class Structure{
+    field int x;
+    constructor Structure new(){
+        let x = 1;
+        do draw();
+        return this;
+    }
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void draw(){
+        do Screen.drawLine(15,231,495,231);
+        do Screen.drawLine(15,24,495,24);
+        do Screen.drawLine(15,24,15,231);
+        do Screen.drawLine(495,24,495,231);
+        return;
+    }
+}

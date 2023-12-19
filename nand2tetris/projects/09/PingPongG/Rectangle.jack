@@ -1,0 +1,72 @@
+class Rectangle{
+    field int p1 , q1 , p2 , q2;
+    constructor Rectangle new(int p , int q , int r , int s){
+        let p1 = p;
+        let q1 = q;
+        let p2 = r;
+        let q2 = s;
+        do draw();
+        return this;
+    }
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void draw (){
+        do Screen.drawRectangle(p1 , q1 , p2 , q2);
+        return;
+    }
+
+    method void moveDown(){
+        if (q2 < 230){
+            do Screen.setColor(false);
+            do Screen.drawRectangle(p1 , q1 , p2 , q2);
+            let q2 = q2 + 1;
+            let q1 = q1 + 1;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(p1 , q1 , p2 , q2);
+        }
+        return;
+    }
+
+    method void moveUp(){
+        if (q1 > 25){
+            do Screen.setColor(false);
+            do Screen.drawRectangle(p1 , q1 , p2 , q2);
+            let q1 = q1 - 1;
+            let q2 = q2 - 1;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(p1 , q1 , p2 , q2);
+        }
+        return;
+    }
+
+    method void aimove(int y , int x){
+        var int center;
+        var int centerx;
+        let center = y;
+        let centerx = x;
+        if (centerx < 250){
+            do Screen.setColor(false);
+            do Screen.drawRectangle(p1 , q1 , p2 , q2);
+            if (center = -1){
+            do moveUp();
+            }
+            if (center = 1)
+            {
+                do moveDown();
+            }
+            do Screen.setColor(true);
+            do Screen.drawRectangle(p1 , q1 , p2 , q2);
+        }
+        return;
+    }
+
+    method int gety1(){
+        return q1;
+    }
+    method int gety2(){
+        return q2;
+    }
+    
+}
