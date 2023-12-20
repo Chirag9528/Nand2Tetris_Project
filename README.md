@@ -17,7 +17,7 @@ To get started with the NAND to Tetris projects, follow these steps:
 
 1. Clone the repository:
 
-   git clone https://github.com/your-username/nand-to-tetris.git
+   git clone https://github.com/Chirag9528/Nand2Tetris_Project.git
 
 2.Navigate to the project directory:
 
