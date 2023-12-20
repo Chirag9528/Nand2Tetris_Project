@@ -1,8 +1,8 @@
-# NAND to Tetris Projects
+# NanD2Tetris Projects
 
 ## Overview
 
-This repository contains the solutions and resources for the NAND to Tetris project, a comprehensive journey to build a modern computer system "from scratch." The projects cover various aspects of computer architecture, starting from basic logic gates all the way to a simple operating system.
+This repository contains the solutions and resources for the Nand2Tetris project, a comprehensive journey to build a modern computer system "from scratch". The projects cover various aspects of computer architecture, starting from basic logic gates all the way to a simple operating system.
 
 ## Table of Contents
 
@@ -13,15 +13,15 @@ This repository contains the solutions and resources for the NAND to Tetris proj
 
 ## Getting Started
 
-To get started with the NAND to Tetris projects, follow these steps:
+To get started with the Nand2Tetris projects, follow these steps:
 
 1. Clone the repository:
 
    git clone https://github.com/Chirag9528/Nand2Tetris_Project.git
 
-2.Navigate to the project directory:
+2. Navigate to the project directory:
 
-  cd nand2tetris
+   cd nand2tetris
 
 ## Project List
 
