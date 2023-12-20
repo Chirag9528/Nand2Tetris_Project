@@ -1,4 +1,4 @@
-# NanD2Tetris Projects
+# Nand2Tetris Projects
 
 ## Overview
 
