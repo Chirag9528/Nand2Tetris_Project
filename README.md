@@ -38,7 +38,7 @@ To get started with the NAND to Tetris projects, follow these steps:
 11. Project 11: High-Level Language II: Complete the Jack compiler (part II) to generate Hack assembly code.
 12. Project 12: Operating System: Create a simple operating system for the Hack computer.
 
-## Project Structur
+## Project Structure
 
 The repository is structured as follows:
 
